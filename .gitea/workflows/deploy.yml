@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: [raspberrypi]
+    runs-on: [rasberrypi]
     steps:
       - name: Checkout código
         uses: actions/checkout@v3
