@@ -1,18 +1,11 @@
-name: Deploy Website
 
+name: Test Workflow
 on:
   push:
     branches:
       - main
-
 jobs:
-  deploy:
+  test:
     runs-on: [rasberrypi]
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v3
-
-      - name: Ejecutar script de despliegue
-        run: |
-          chmod +x /home/arestoy/scripts/deploy-intranet-site.sh
-          /home/arestoy/scripts/deploy-intranet-site.sh
+      - run: echo "Workflow ejecutado correctamente"
