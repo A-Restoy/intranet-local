@@ -18,35 +18,22 @@
 
 <!-- Search -->
 <div class="max-w-7xl mx-auto p-6">
-<input type="text" placeholder="Buscar aplicación..." class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6">
+<input type="text" id="search" placeholder="Buscar aplicación..." class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6">
 </div>
 
 
 <!-- Main -->
 <main class="max-w-7xl mx-auto p-6">
 
-<!-- Categoría Recursos Humanos -->
-<section class="mb-8">
-<h2 class="text-xl font-semibold text-gray-700 mb-4">👥 Recursos Humanos</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-<a href="https://portal.kairoshr.es/login" target="_blank" class="bg-white shadow rounded-2xl p-6 hover:shadow-lg transition text-center">
-<div class="text-4xl mb-2">📝</div>
-<h3 class="text-lg font-medium text-gray-800">Portal del empleado</h3>
-<p class="text-sm text-gray-500">Gestión personal kairos</p>
-</a>
-<a href="https://portal.kairoshr.es/employee/holidays" target="_blank" class="bg-white shadow rounded-2xl p-6 hover:shadow-lg transition text-center">
-<div class="text-4xl mb-2">📅</div>
-<h3 class="text-lg font-medium text-gray-800">Vacaciones</h3>
-<p class="text-sm text-gray-500">Solicitud de permisos</p>
-</a>
-</div>
-</section>
-
-
 <!-- Categoría Técnico -->
 <section class="mb-8">
 <h2 class="text-xl font-semibold text-gray-700 mb-4">⚙️ Técnico</h2>
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+<a href="https://ia.europesip.com/" target="_blank" class="bg-white shadow rounded-2xl p-6 hover:shadow-lg transition text-center">
+<div class="text-4xl mb-2">🤖</div>
+<h3 class="text-lg font-medium text-gray-800">Open WebUI</h3>
+<p class="text-sm text-gray-500">Acceso a IA</p>
+</a>
 <a href="https://desk.zoho.eu/agent/europesip" target="_blank" class="bg-white shadow rounded-2xl p-6 hover:shadow-lg transition text-center">
 <div class="text-4xl mb-2">💻</div>
 <h3 class="text-lg font-medium text-gray-800">Soporte IT</h3>
@@ -97,6 +84,23 @@
 </div>
 </section>
 
+<!-- Categoría Recursos Humanos -->
+<section class="mb-8">
+<h2 class="text-xl font-semibold text-gray-700 mb-4">👥 Recursos Humanos</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+<a href="https://portal.kairoshr.es/login" target="_blank" class="bg-white shadow rounded-2xl p-6 hover:shadow-lg transition text-center">
+<div class="text-4xl mb-2">📝</div>
+<h3 class="text-lg font-medium text-gray-800">Portal del empleado</h3>
+<p class="text-sm text-gray-500">Gestión personal kairos</p>
+</a>
+<a href="https://portal.kairoshr.es/employee/holidays" target="_blank" class="bg-white shadow rounded-2xl p-6 hover:shadow-lg transition text-center">
+<div class="text-4xl mb-2">📅</div>
+<h3 class="text-lg font-medium text-gray-800">Vacaciones</h3>
+<p class="text-sm text-gray-500">Solicitud de permisos</p>
+</a>
+</div>
+</section>
+
 <!-- Categoría Finanzas -->
 <section class="mb-8">
 <h2 class="text-xl font-semibold text-gray-700 mb-4">💰 Red Local</h2>
@@ -120,7 +124,23 @@
 
 <!-- Footer -->
 <footer class="bg-gray-200 text-center py-4 text-sm text-gray-600">
-© 2025 Mi Empresa - Uso interno | Soporte: soporte@miempresa.com
+© 2026 Mi Empresa - Uso interno | Soporte: soporte@miempresa.com
 </footer>
+
+<script>
+document.getElementById('search').addEventListener('input', function (e) {
+  var query = e.target.value.trim().toLowerCase();
+  document.querySelectorAll('main section').forEach(function (section) {
+    var visibleCards = 0;
+    section.querySelectorAll(':scope > div > a').forEach(function (card) {
+      var text = card.textContent.toLowerCase();
+      var match = text.includes(query);
+      card.classList.toggle('hidden', !match);
+      if (match) visibleCards++;
+    });
+    section.classList.toggle('hidden', visibleCards === 0);
+  });
+});
+</script>
 </body>
 </html>
